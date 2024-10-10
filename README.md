@@ -1,4 +1,4 @@
-#### URL Shortener Service
+# URL Shortener Service
 
 ## A simple URL shortener service built with Node.js and MongoDB. This application allows users to shorten long URLs, track visit 
 ## history, and easily redirect to the original URLs.
