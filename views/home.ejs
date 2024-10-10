@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+</head>
+<body style="background-color: gainsboro;">
+    <h1>URL Shortener</h1>
+
+    <div>
+        <% if(locals.id){ %>
+            <p>Your Shortened URL : http://localhost:3000/<%= locals.id %>  </a></p>
+        <% } %>
+
+        <form action="/url" method="POST">
+            <label for="" style="font-size: larger;">Enter your Original URL</label>
+            <input type="text" 
+                   placeholder="https://example.com"
+                   name = "url"
+                   style="padding: 4px; margin-left: 2px; width: 200px;"
+            >
+            <button style="padding: 4px; margin-left: 8px;">Submit</button>
+        </form>
+    </div>
+
+    <div>
+        <% if (locals.urls) { %>
+            <table border="1"  style="border-collapse: collapse; margin-top: 100px;" >
+                <thead>
+                    <th>S. No</th>
+                    <th>ShortID</th>
+                    <th>Redirect</th>
+                    <th>Clicks</th>
+                </thead>
+                <tbody>
+                    <% urls.forEach((url , idx) => { %>
+                        <tr>
+                            <td> <%= idx+1 %> </td>
+                            <td> <%= url.shortID %>  </td>
+                            <td> <%= url.redirectURL %>  </td>
+                            <td> <%= url.visitedHistory.length %>  </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+
+
+
+</body>
+</html>
